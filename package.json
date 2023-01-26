@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "mongoose": "^6.9.0",
+    "request": "^2.88.2"
+  },
+  "type": "commonjs",
+  "name": "douban",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
