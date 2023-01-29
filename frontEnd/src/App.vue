@@ -7,11 +7,11 @@
           <span>ZSR</span>
         </RouterLink>
       </div>
-      <ul v-for="([link, name], index) in links" :key="index">
-        <li>
-          <RouterLink :to="link">{{ name }}</RouterLink>
-        </li>
-      </ul>
+      <div v-for="([link, name], index) in links" :key="index" class="list">
+
+        <RouterLink :to="link">{{ name }}</RouterLink>
+
+      </div>
     </el-aside>
     <el-container>
       <el-header>
@@ -33,43 +33,51 @@ import { RouterLink, RouterView } from 'vue-router';
 
 export default {
   name: 'app',
+  components: { RouterView, RouterLink },
   data()
   {
     return {
       links: [['/', 'home'], ['/charts', 'charts']],
     }
   },
+  methods: {
+  }
 }
 </script>
 
 <style scoped>
-.active {
+div.list a.router-link-exact-active {
   border-left: 3px solid rgb(21, 163, 98);
   background-color: rgb(237, 253, 246);
   color: rgb(21, 163, 98);
 }
 
-ul li {
-  margin: 0px 0px;
-  padding: 0px 20px;
-  height: 50px;
-  line-height: 40px;
-  font-weight: 700;
-  font-size: large;
-  transition: all 0.1s ease;
-
-
+.list {
+  overflow: hidden;
 }
 
-ul li a:visited {
+.list a {
+  display: inline-block;
+  margin: 0px 0px;
+  padding: 0px 20px;
+  height: 100%;
+  width: 100%;
+  line-height: 50px;
+  font-weight: normal;
+  font-size: large;
+  letter-spacing: 1px;
+  transition: all 0.1s ease;
+}
+
+.list a:visited {
   color: black;
 }
 
-ul li:hover {
+.list:hover {
   border-left: 3px solid rgb(21, 163, 98);
 }
 
-ul li a:hover {
+.list a:hover {
   color: rgb(21, 163, 98);
 }
 
@@ -95,7 +103,7 @@ ul li a:hover {
   letter-spacing: 5px;
   font-size: 25px;
   font-family: 'Microsoft YaHei';
-  font-weight: bolder;
+  font-weight: lighter;
 }
 
 .total {
@@ -122,5 +130,6 @@ ul li a:hover {
 
 .el-main {
   background-color: rgb(245, 246, 254);
+  padding: 30px 40px;
 }
 </style>
