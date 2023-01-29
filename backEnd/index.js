@@ -1,34 +1,41 @@
-const getDozen = require('./spider');
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const http = require('http');
+const getAverageScore = require('./DataOperation/getAverageScore');
+const getCountPerHalfHour = require('./DataOperation/getCountPerHour');
+const writeDb = require('./DataOperation/writeDb');
 
-(async () => {
-	let DB_URL = 'mongodb://localhost:27017/douban';
-	let options = { useNewUrlParser: true };
+const hostname = '127.0.0.1';
+const port = 3000;
 
-	mongoose.set('strictQuery', false);
+const server = http.createServer(async function (request, response) {
+	console.log('接入http请求，方法 ', request.method, ' 来自 ', request.url);
 
-	// 连接数据库
-	await mongoose.connect(DB_URL, options).catch((err) => console.log(err));
+	response.statusCode = 200;
+	response.setHeader('Content-Type', 'application/json; charset=utf-8');
 
-	//创建Schema对象（约束）
-	let commentSchema = new Schema({
-		date: Date,
-		place: String,
-		score: Number,
-		comment: String,
-	});
+	//这是爬虫，请勿启动
+	// await writeDb();
 
-	/**
-	 * @description 这是douban数据库里comments集合的结构，使用create成员函数实现添加内容
-	 */
-	const commentModle = mongoose.model('comments', commentSchema);
+	switch (request.url) {
+		case '/':
+		case '/api':
+			response.setHeader('Content-Type', 'text/html; charset=utf-8');
+			response.write('<h1>这里是初始界面</h1>');
+			break;
 
-	const spiderUrl = new URL(
-		'https://movie.douban.com/subject/34444648/comments?start=0&limit=200&status=P&sort=time'
-	);
+		case '/api/averageScore':
+			response.write(JSON.stringify(await getAverageScore()));
+			break;
 
-	let arr = await getDozen(spiderUrl);
+		case '/api/countPerHalfHour':
+			response.write(JSON.stringify(await getCountPerHalfHour()));
+			break;
 
-	await commentModle.insertMany(arr);
-})();
+		default:
+			break;
+	}
+	response.end();
+});
+
+server.listen(port, hostname, () => {
+	console.log(`Server running at http://${hostname}:${port}/`);
+});
