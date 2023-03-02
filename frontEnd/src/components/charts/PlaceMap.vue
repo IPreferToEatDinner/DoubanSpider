@@ -157,8 +157,6 @@ export default {
 
       echarts.registerMap('china', china);
 
-      console.log('看见我说明马上就要设置option了', this.option);
-
       mapChart.setOption(this.option);
 
       mapChart.on('click', (parma) => console.log(parma))

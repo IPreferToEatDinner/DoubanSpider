@@ -12,9 +12,3 @@ div {
 </style>
 
 
-<script>
-export default {
-
-}
-</script>
-
