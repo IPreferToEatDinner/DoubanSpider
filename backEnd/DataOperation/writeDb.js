@@ -2,7 +2,7 @@ const getDozen = require('./spider');
 const mongoose = require('mongoose');
 const commentModle = require('./commentModel');
 
-module.exports = async function writeDb() {
+async function writeDb() {
 	let DB_URL = 'mongodb://localhost:27017/douban';
 	let options = { useNewUrlParser: true };
 
@@ -18,4 +18,6 @@ module.exports = async function writeDb() {
 	let arr = await getDozen(spiderUrl);
 
 	await commentModle.insertMany(arr);
-};
+}
+
+module.exports = writeDb;

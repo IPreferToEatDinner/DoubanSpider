@@ -3,26 +3,25 @@
     <el-col :span="16">
       <div class="grid-content ep-bg-purple">
         <ChartArea>
-          <AverageScore></AverageScore>
+          <PlaceMap></PlaceMap>
         </ChartArea>
       </div>
     </el-col>
     <el-col :span="8">
-      <div class="grid-content ep-bg-purple" />
+      <div class="grid-content ep-bg-purple">
+        <ChartArea>
+          <AverageScore></AverageScore>
+        </ChartArea>
+      </div>
     </el-col>
   </el-row>
   <el-row :gutter="20">
-    <el-col :span="8">
-      <div class="grid-content ep-bg-purple" />
-    </el-col>
-    <el-col :span="8">
-      <div class="grid-content ep-bg-purple" />
-    </el-col>
-    <el-col :span="4">
-      <div class="grid-content ep-bg-purple" />
-    </el-col>
-    <el-col :span="4">
-      <div class="grid-content ep-bg-purple" />
+    <el-col :span="24">
+      <div class="grid-content ep-bg-purple">
+        <ChartArea>
+          <TimeCount></TimeCount>
+        </ChartArea>
+      </div>
     </el-col>
   </el-row>
   <el-row :gutter="20">
@@ -60,7 +59,9 @@
 <script>
 import ChartArea from '../components/ChartArea.vue';
 import AverageScore from '../components/charts/AverageScore.vue';
+import PlaceMap from '../components/charts/PlaceMap.vue';
+import TimeCount from '../components/charts/TimeCount.vue';
 export default {
-  components: { AverageScore, ChartArea }
+  components: { AverageScore, ChartArea, PlaceMap, TimeCount }
 }
 </script>

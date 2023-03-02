@@ -20,6 +20,9 @@ async function getAverageScore() {
 					avgScore: { $avg: '$score' },
 				},
 			},
+			{
+				$sort: { _id: 1 },
+			},
 		]);
 	} catch (error) {
 		console.log('at calculate average score :', error);
