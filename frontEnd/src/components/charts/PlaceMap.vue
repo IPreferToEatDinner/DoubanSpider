@@ -12,6 +12,7 @@
 // 地图
 import * as echarts from "echarts/core";
 import china from "echarts/map/json/china.json";
+
 import
 {
   ToolboxComponent,

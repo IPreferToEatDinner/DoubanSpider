@@ -3,7 +3,7 @@
     <el-col :span="16">
       <div class="grid-content ep-bg-purple">
         <ChartArea>
-          <PlaceMap></PlaceMap>
+          <!-- <PlaceMap></PlaceMap> -->
         </ChartArea>
       </div>
     </el-col>
@@ -59,9 +59,9 @@
 <script>
 import ChartArea from '../components/ChartArea.vue';
 import AverageScore from '../components/charts/AverageScore.vue';
-import PlaceMap from '../components/charts/PlaceMap.vue';
+// import PlaceMap from '../components/charts/PlaceMap.vue';
 import TimeCount from '../components/charts/TimeCount.vue';
 export default {
-  components: { AverageScore, ChartArea, PlaceMap, TimeCount }
+  components: { AverageScore, ChartArea, TimeCount }
 }
 </script>

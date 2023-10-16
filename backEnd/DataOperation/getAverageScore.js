@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const commentModel = require('./commentModel');
 
 async function getAverageScore() {
-	let DB_URL = 'mongodb://localhost:27017/douban';
+	let DB_URL = 'mongodb://127.0.0.1:27017/douban';
 	let options = { useNewUrlParser: true };
 
 	mongoose.set('strictQuery', false);
