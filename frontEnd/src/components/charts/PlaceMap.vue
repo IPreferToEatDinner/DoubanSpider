@@ -11,7 +11,7 @@
 <script>
 // 地图
 import * as echarts from "echarts/core";
-import china from "echarts/map/json/china.json";
+import china from "../../assets/china.json";
 
 import
 {
